@@ -66,7 +66,7 @@ const httpsDomains = new Set([
 ]);
 
 const TUMBLR_DOMAIN = /^[\w-]+\.tumblr\.com$/i;
-const TUMBLR_COMPATIBLE_PATH = /^\/(?:$|post\/\d+(?:\/|$)|tagged\/.)/;
+const TUMBLR_COMPATIBLE_PATH = /^\/(?:$|post\/\d+(?:\/|$)|tagged\/.|blog\/view\/.)/;
 const TUMBLR_MEDIA = /^(?:\d+\.)?media\.tumblr\.com$/;
 const TUMBLR_AUDIO = /^\/audio_file\/[^/]+\/\d+\/(tumblr_[a-zA-Z\d]+)$/;
 const TUMBLR_SHORTENED = /^\/([a-zA-Z0-9_-]+)$/;
@@ -79,8 +79,10 @@ const stripSuffix = (text, suffix) =>
 		text.slice(0, -suffix.length) :
 		text;
 
-const blogPath = (name, pathname = '/') =>
-	'/blog/' + stripSuffix(name, '.tumblr.com') + pathname;
+const blogPath = (name, pathname = '/') => {
+	if (name == 'www.tumblr.com') return pathname;
+	return '/blog/' + stripSuffix(name, '.tumblr.com') + pathname;
+};
 
 const rewriteLink = (uriInfo, baseDomain) => {
 	if (!(uriInfo instanceof url.Url)) {
@@ -174,18 +176,15 @@ const rewriteLink = (uriInfo, baseDomain) => {
 	} else if (TUMBLR_MEDIA.test(hostname)) {
 		uriInfo.protocol = 'https:';
 		uriInfo.embeddable = true;
-	} else {
-		const isTumblrDomain =
-			TUMBLR_DOMAIN.test(hostname) ||
-			baseDomain === hostname;
+	}
 
-		if (isTumblrDomain && TUMBLR_COMPATIBLE_PATH.test(pathname)) {
-			uriInfo.pathname = blogPath(hostname, pathname);
-			uriInfo.protocol = null;
-			uriInfo.hostname = null;
-			uriInfo.host = null;
-			uriInfo.slashes = false;
-		}
+	const isTumblrDomain = TUMBLR_DOMAIN.test(hostname) || baseDomain === hostname;
+	if (isTumblrDomain /*&& TUMBLR_COMPATIBLE_PATH.test(pathname)*/) {
+		uriInfo.pathname = blogPath(hostname, pathname);
+		uriInfo.protocol = null;
+		uriInfo.hostname = null;
+		uriInfo.host = null;
+		uriInfo.slashes = false;
 	}
 
 	return uriInfo;

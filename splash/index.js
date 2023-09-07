@@ -326,6 +326,8 @@ const routes = [
 	match(['GET', 'blog', bind('name'), 'tagged', bind('tag')], viewBlog),
 	match(['GET', 'blog', bind('name'), 'post', bind('id'), bind('slug')], viewPost),
 	match(['GET', 'blog', bind('name'), 'post', bind('id')], viewPost),
+	match(['GET', 'blog', 'view', bind('name'), bind('id')], viewPost),
+	match(['GET',  bind('name'), bind('id'), bind('title')], viewPost),
 	match(['GET', 'tmblr', bind('code')], viewShortened),
 	match(['GET', 'opensearch.xml'], getOpenSearch),
 ];
@@ -389,7 +391,7 @@ const serve = (request, response) => {
 {
 	const server = http.createServer(serve);
 
-	server.listen(process.env.PORT, '::1');
+	server.listen(process.env.PORT);
 
 	server.once('listening', () => {
 		const address = server.address();

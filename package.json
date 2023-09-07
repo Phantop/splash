@@ -9,6 +9,7 @@
 		"@charmander/test": "0.3.0"
 	},
 	"scripts": {
+		"start": "node splash",
 		"test": "node test"
 	},
 	"private": true

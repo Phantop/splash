@@ -283,3 +283,7 @@ body {
 #page-navigation [rel=next] {
 	margin-left: auto;
 }
+
+.post figure > img {
+	max-width: 100%;
+}

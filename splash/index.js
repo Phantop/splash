@@ -329,7 +329,9 @@ const routes = [
 	match(['GET', 'blog', 'view', bind('name'), bind('id')], viewPost),
 	match(['GET',  bind('name'), bind('id'), bind('title')], viewPost),
 	match(['GET', 'tmblr', bind('code')], viewShortened),
+	match(['GET',  bind('name'), bind('id')], viewPost),
 	match(['GET', 'opensearch.xml'], getOpenSearch),
+	match(['GET',  bind('name'), ], viewBlog),
 ];
 
 const styleSrc =

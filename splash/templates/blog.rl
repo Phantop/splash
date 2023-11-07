@@ -18,7 +18,7 @@ macro post-content(post, type, hasTrail)
 
 					" asked:"
 
-			p "#{post.question}"
+			!"#{rewriteHTML(post.question)}"
 
 		!"#{rewriteHTML(post.answer)}"
 	elif type === 'photo'

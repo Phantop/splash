@@ -287,3 +287,15 @@ body {
 .post figure > img {
 	max-width: 100%;
 }
+
+@media (prefers-color-scheme: dark) {
+	.post {
+		background-color: #111;
+		color: white;
+	}
+	body { background-color: #1c2e3f; }
+	.post a { color: #6495ed; }
+	.post .post-tags a { color: #999; }
+	.trail { border-top: 1px solid #2f2f2f; }
+	.post blockquote { border-left: 0.2em solid #444; }
+}

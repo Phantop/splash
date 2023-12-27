@@ -2,7 +2,7 @@
 	"api": {
 		"consumer_key": "o8d4h0HSvVB0Z1IZeT6fAtSdFKXh74pvXA6y8AQpXgoucRQvmP"
 	},
-	"host": "localhost",
-	"prefix": "http://localhost:3000",
+	"host": "splashblr.fly.dev",
+	"prefix": "https://localhost:3000",
 	"includeData": false
 }

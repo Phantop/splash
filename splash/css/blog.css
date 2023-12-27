@@ -31,7 +31,6 @@ body {
 }
 
 #header {
-	margin: 2em 0.4em;
 	text-align: center;
 }
 
@@ -284,8 +283,14 @@ body {
 	margin-left: auto;
 }
 
+.post figure {
+	max-width: -webkit-fill-available;
+    margin: auto;
+}
 .post figure > img {
+    display: block;
 	max-width: 100%;
+    margin: auto;
 }
 
 @media (prefers-color-scheme: dark) {
@@ -298,4 +303,7 @@ body {
 	.post .post-tags a { color: #999; }
 	.trail { border-top: 1px solid #2f2f2f; }
 	.post blockquote { border-left: 0.2em solid #444; }
+	.post .post-question { background-color: #212121; }
+	.post .post-question h4, .post .post-question .asker a { color: white; }
+
 }

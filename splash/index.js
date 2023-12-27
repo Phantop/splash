@@ -326,6 +326,7 @@ const routes = [
 	match(['GET', 'blog', bind('name'), 'tagged', bind('tag')], viewBlog),
 	match(['GET', 'blog', bind('name'), 'post', bind('id'), bind('slug')], viewPost),
 	match(['GET', 'blog', bind('name'), 'post', bind('id')], viewPost),
+	match(['GET', 'tumblr', bind('name'), bind('id'), bind('slug')], viewPost),
 	match(['GET', 'blog', 'view', bind('name'), bind('id')], viewPost),
 	match(['GET',  bind('name'), bind('id'), bind('title')], viewPost),
 	match(['GET', 'tmblr', bind('code')], viewShortened),

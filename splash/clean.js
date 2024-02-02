@@ -80,7 +80,7 @@ const stripSuffix = (text, suffix) =>
 		text;
 
 const blogPath = (name, pathname = '/') => {
-	if (name == 'www.tumblr.com') return pathname;
+	if (name == 'priviblur.fly.dev' || name == 'www.tumblr.com') return pathname;
 	return '/blog/' + stripSuffix(name, '.tumblr.com') + pathname;
 };
 
